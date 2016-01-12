@@ -70,5 +70,7 @@ dependencies {
     compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2' // Retrofit的rx解析库
     compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2' // Retrofit的gson库
 
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+
     provided 'javax.annotation:jsr250-api:1.0' // Java标注
 }

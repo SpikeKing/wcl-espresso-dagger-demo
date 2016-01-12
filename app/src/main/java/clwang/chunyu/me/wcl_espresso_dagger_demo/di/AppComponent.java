@@ -1,7 +1,5 @@
 package clwang.chunyu.me.wcl_espresso_dagger_demo.di;
 
-import android.content.Context;
-
 import clwang.chunyu.me.wcl_espresso_dagger_demo.MainActivity;
 import dagger.Component;
 
@@ -14,6 +12,4 @@ import dagger.Component;
 @Component(modules = AppModule.class)
 public interface AppComponent {
     void inject(MainActivity activity);
-
-    @AppScope Context appContex();
 }
