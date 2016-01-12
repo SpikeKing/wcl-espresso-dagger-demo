@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">wcl-espresso-dagger-demo</string>
+
+    <string name="humidity">Humidity:</string>
+    <string name="search">Search</string>
+
+    <string name="open_weather_api_key">916d752c71ffb36d77c32089ba636569</string>
+</resources>
