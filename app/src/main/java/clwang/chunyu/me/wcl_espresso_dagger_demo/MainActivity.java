@@ -21,13 +21,18 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * 实现简单的查询天气的功能.
+ *
+ * @author wangchenlong
+ */
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding mBinding; // 数据绑定
     private MenuItem mSearchItem; // 菜单项
     private Subscription mSubscription; // 订阅
 
-    @Inject WeatherApiClient mWeatherApiClient;
+    @Inject WeatherApiClient mWeatherApiClient; // 天气客户端
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // 搜索项着色
+    // 搜索项着色, 会覆盖基础颜色, 取交集.
     private void tintSearchMenuItem() {
         int color = ContextCompat.getColor(this, android.R.color.white); // 白色
         mSearchItem.getIcon().setColorFilter(color, PorterDuff.Mode.SRC_IN); // 交集
@@ -57,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override public boolean onQueryTextSubmit(String query) {
                 MenuItemCompat.collapseActionView(mSearchItem);
-                loadWeatherData(query);
+                loadWeatherData(query); // 加载查询数据
                 return true;
             }
 

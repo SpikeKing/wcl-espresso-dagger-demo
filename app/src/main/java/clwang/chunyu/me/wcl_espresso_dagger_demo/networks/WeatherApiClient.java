@@ -13,7 +13,7 @@ import rx.Observable;
 public interface WeatherApiClient {
     String END_POINT = "http://api.openweathermap.org/data/2.5/";
 
-    // 查询城市天气
+    // 查询城市天气, 2.0的写法更加严格, 注意"/"的位置.
     @GET("weather") Observable<WeatherData> getWeatherForCity(
             @Query("q") String cityName);
 }
