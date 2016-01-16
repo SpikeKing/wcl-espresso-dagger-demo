@@ -55,7 +55,7 @@ public final class TestData {
             "        \"sunset\": 1449328836\n" +
             "    },\n" +
             "    \"id\": 6940463,\n" +
-            "    \"name\": \"Altstadt\",\n" +
+            "    \"name\": \"Beijing\",\n" +
             "    \"cod\": 200\n" +
             "}";
 

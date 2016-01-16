@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="weatherData"
             type="clwang.chunyu.me.wcl_espresso_dagger_demo.data.WeatherData"/>

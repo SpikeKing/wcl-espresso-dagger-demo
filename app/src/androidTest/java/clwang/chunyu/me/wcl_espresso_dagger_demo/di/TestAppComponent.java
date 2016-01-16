@@ -5,7 +5,7 @@ import clwang.chunyu.me.wcl_espresso_dagger_demo.MainActivityTest;
 import dagger.Component;
 
 /**
- * 测试组件
+ * 测试组件, 添加TestAppModule
  * <p>
  * Created by wangchenlong on 16/1/16.
  */

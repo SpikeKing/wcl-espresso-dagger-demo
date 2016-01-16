@@ -15,9 +15,11 @@ plugins {
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt' // 注释处理
 
+final BUILD_TOOLS_VERSION = '23.0.1'
+
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "${BUILD_TOOLS_VERSION}"
 
     defaultConfig {
         applicationId "clwang.chunyu.me.wcl_espresso_dagger_demo"
@@ -62,7 +64,7 @@ dependencies {
     // Warning:Conflict with dependency 'com.android.support:support-annotations'.
     // Resolved versions for app (23.1.1) and test app (23.0.1) differ.
     // See http://g.co/androidstudio/app-test-app-conflict for details.
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile "com.android.support:appcompat-v7:${BUILD_TOOLS_VERSION}" // 需要与BuildTools保持一致
 
     compile 'com.jakewharton:butterknife:7.0.1' // 标注
 
@@ -70,13 +72,11 @@ dependencies {
     compile "com.google.dagger:dagger-compiler:${DAGGER_VERSION}" // dagger2
 
     compile 'io.reactivex:rxandroid:1.1.0' // RxAndroid
-    compile 'io.reactivex:rxjava:1.1.0' // 推荐同时加载RxJava
 
     compile "com.squareup.retrofit:retrofit:${RETROFIT_VERSION}" // Retrofit网络处理
     compile "com.squareup.retrofit:adapter-rxjava:${RETROFIT_VERSION}" // Retrofit的rx解析库
     compile "com.squareup.retrofit:converter-gson:${RETROFIT_VERSION}" // Retrofit的gson库
-
-    compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0' // 拦截器
 
     // 测试的编译
     androidTestCompile 'com.android.support.test:runner:0.4.1' // Android JUnit Runner

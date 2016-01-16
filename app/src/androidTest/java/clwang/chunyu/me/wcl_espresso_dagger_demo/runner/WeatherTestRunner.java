@@ -23,10 +23,9 @@ import android.support.test.runner.AndroidJUnitRunner;
 import clwang.chunyu.me.wcl_espresso_dagger_demo.TestWeatherApplication;
 
 /**
- * 更换Application
+ * 更换Application, 设置TestRunner
  */
 public class WeatherTestRunner extends AndroidJUnitRunner {
-
     @Override
     public Application newApplication(ClassLoader cl, String className, Context context) throws InstantiationException,
             IllegalAccessException, ClassNotFoundException {

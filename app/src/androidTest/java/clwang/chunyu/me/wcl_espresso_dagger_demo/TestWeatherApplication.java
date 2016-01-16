@@ -25,6 +25,5 @@ public class TestWeatherApplication extends WeatherApplication {
     public TestAppComponent getAppComponent() {
         return mTestAppComponent;
     }
-
 }
 

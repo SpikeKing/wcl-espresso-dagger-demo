@@ -8,7 +8,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * 测试App的Module
+ * 测试App的Module, 提供AppContext, WeatherApiClient的模拟数据.
  * <p>
  * Created by wangchenlong on 16/1/16.
  */

@@ -33,7 +33,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
-    private static final String CITY_NAME = "Altstadt";
+    private static final String CITY_NAME = "Beijing"; // 因为我们使用测试接口, 设置任何都可以.
 
     @Rule public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
 
@@ -54,8 +54,6 @@ public class MainActivityTest {
 
         onView(withId(R.id.city_name)).check(matches(withText(weatherData.getCityName())));
         onView(withId(R.id.weather_date)).check(matches(withText(weatherData.getWeatherDate())));
-        Log.e("DEBUG-WCL", "DATA:" + weatherData.getWeatherState() + "|" + weatherData.getWeatherDescription() + "|"
-                + weatherData.getTemperatureCelsius() + "|" + weatherData.getHumidity());
         onView(withId(R.id.weather_state)).check(matches(withText(weatherData.getWeatherState())));
         onView(withId(R.id.weather_description)).check(matches(withText(weatherData.getWeatherDescription())));
         onView(withId(R.id.temperature)).check(matches(withText(weatherData.getTemperatureCelsius())));
