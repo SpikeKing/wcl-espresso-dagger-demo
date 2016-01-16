@@ -7,13 +7,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import javax.inject.Inject;
 
+import clwang.chunyu.me.wcl_espresso_dagger_demo.data.WeatherData;
 import clwang.chunyu.me.wcl_espresso_dagger_demo.databinding.ActivityMainBinding;
 import clwang.chunyu.me.wcl_espresso_dagger_demo.di.WeatherApplication;
 import clwang.chunyu.me.wcl_espresso_dagger_demo.networks.WeatherApiClient;
@@ -79,17 +79,19 @@ public class MainActivity extends AppCompatActivity {
                 .getWeatherForCity(cityName)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        weatherData -> {
-                            mBinding.progress.setVisibility(View.INVISIBLE);
-                            mBinding.weatherLayout.setVisibility(View.VISIBLE);
-                            mBinding.setWeatherData(weatherData);
-                        },
-                        throwable -> {
-                            mBinding.progress.setVisibility(View.INVISIBLE);
-                            Log.e("DEBUG-WCL", throwable.getLocalizedMessage(), throwable);
-                        }
-                );
+                .subscribe(this::bindData, this::bindDataError);
+    }
+
+    // 绑定天气数据
+    private void bindData(WeatherData weatherData) {
+        mBinding.progress.setVisibility(View.INVISIBLE);
+        mBinding.weatherLayout.setVisibility(View.VISIBLE);
+        mBinding.setWeatherData(weatherData);
+    }
+
+    // 绑定数据失败
+    private void bindDataError(Throwable throwable) {
+        mBinding.progress.setVisibility(View.INVISIBLE);
     }
 
     @Override
