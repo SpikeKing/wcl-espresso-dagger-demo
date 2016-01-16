@@ -62,7 +62,7 @@ dependencies {
     // Warning:Conflict with dependency 'com.android.support:support-annotations'.
     // Resolved versions for app (23.1.1) and test app (23.0.1) differ.
     // See http://g.co/androidstudio/app-test-app-conflict for details.
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.0.1'
 
     compile 'com.jakewharton:butterknife:7.0.1' // 标注
 
