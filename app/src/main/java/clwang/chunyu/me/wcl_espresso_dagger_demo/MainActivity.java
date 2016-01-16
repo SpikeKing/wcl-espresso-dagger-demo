@@ -15,7 +15,7 @@ import android.view.View;
 import javax.inject.Inject;
 
 import clwang.chunyu.me.wcl_espresso_dagger_demo.databinding.ActivityMainBinding;
-import clwang.chunyu.me.wcl_espresso_dagger_demo.di.DemoApplication;
+import clwang.chunyu.me.wcl_espresso_dagger_demo.di.WeatherApplication;
 import clwang.chunyu.me.wcl_espresso_dagger_demo.networks.WeatherApiClient;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((DemoApplication) getApplication()).getAppComponent().inject(this);
+        ((WeatherApplication) getApplication()).getAppComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 

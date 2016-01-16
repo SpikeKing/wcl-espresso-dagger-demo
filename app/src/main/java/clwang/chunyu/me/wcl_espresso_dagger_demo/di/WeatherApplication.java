@@ -7,7 +7,7 @@ import android.app.Application;
  * <p>
  * Created by wangchenlong on 16/1/12.
  */
-public class DemoApplication extends Application {
+public class WeatherApplication extends Application {
     private AppComponent mAppComponent;
 
     @Override public void onCreate() {

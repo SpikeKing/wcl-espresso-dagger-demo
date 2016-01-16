@@ -1,0 +1,16 @@
+package clwang.chunyu.me.wcl_espresso_dagger_demo.di;
+
+
+import clwang.chunyu.me.wcl_espresso_dagger_demo.MainActivityTest;
+import dagger.Component;
+
+/**
+ * 测试组件
+ * <p>
+ * Created by wangchenlong on 16/1/16.
+ */
+@AppScope
+@Component(modules = TestAppModule.class)
+public interface TestAppComponent extends AppComponent {
+    void inject(MainActivityTest test);
+}

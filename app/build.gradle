@@ -15,18 +15,18 @@ plugins {
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt' // 注释处理
 
-final DAGGER_VERSION = '2.0.2'
-
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.1"
 
     defaultConfig {
         applicationId "clwang.chunyu.me.wcl_espresso_dagger_demo"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+
+        testInstrumentationRunner "clwang.chunyu.me.wcl_espresso_dagger_demo.runner.WeatherTestRunner"
     }
 
     buildTypes {
@@ -53,9 +53,15 @@ android {
     }
 }
 
+final DAGGER_VERSION = '2.0.2'
+final RETROFIT_VERSION = '2.0.0-beta2'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    // Warning:Conflict with dependency 'com.android.support:support-annotations'.
+    // Resolved versions for app (23.1.1) and test app (23.0.1) differ.
+    // See http://g.co/androidstudio/app-test-app-conflict for details.
     compile 'com.android.support:appcompat-v7:23.1.1'
 
     compile 'com.jakewharton:butterknife:7.0.1' // 标注
@@ -66,11 +72,16 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.1.0' // RxAndroid
     compile 'io.reactivex:rxjava:1.1.0' // 推荐同时加载RxJava
 
-    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2' // Retrofit网络处理
-    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2' // Retrofit的rx解析库
-    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2' // Retrofit的gson库
+    compile "com.squareup.retrofit:retrofit:${RETROFIT_VERSION}" // Retrofit网络处理
+    compile "com.squareup.retrofit:adapter-rxjava:${RETROFIT_VERSION}" // Retrofit的rx解析库
+    compile "com.squareup.retrofit:converter-gson:${RETROFIT_VERSION}" // Retrofit的gson库
 
     compile 'com.squareup.okhttp:logging-interceptor:2.6.0'
+
+    // 测试的编译
+    androidTestCompile 'com.android.support.test:runner:0.4.1' // Android JUnit Runner
+    androidTestCompile 'com.android.support.test:rules:0.4.1' // JUnit4 Rules
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1' // Espresso core
 
     provided 'javax.annotation:jsr250-api:1.0' // Java标注
 }
