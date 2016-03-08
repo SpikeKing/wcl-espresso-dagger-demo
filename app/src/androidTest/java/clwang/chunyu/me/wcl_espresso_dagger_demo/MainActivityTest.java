@@ -1,5 +1,7 @@
 package clwang.chunyu.me.wcl_espresso_dagger_demo;
 
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
@@ -53,10 +55,16 @@ public class MainActivityTest {
         onView(withId(android.support.v7.appcompat.R.id.search_src_text)).perform(pressKey(KeyEvent.KEYCODE_ENTER));
 
         onView(withId(R.id.city_name)).check(matches(withText(weatherData.getCityName())));
+
         onView(withId(R.id.weather_date)).check(matches(withText(weatherData.getWeatherDate())));
         onView(withId(R.id.weather_state)).check(matches(withText(weatherData.getWeatherState())));
         onView(withId(R.id.weather_description)).check(matches(withText(weatherData.getWeatherDescription())));
         onView(withId(R.id.temperature)).check(matches(withText(weatherData.getTemperatureCelsius())));
         onView(withId(R.id.humidity)).check(matches(withText(weatherData.getHumidity())));
     }
+
+    public ViewInteraction before(int id) {
+        return onView(withId(id));
+    }
+
 }
