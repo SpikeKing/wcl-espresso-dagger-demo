@@ -22,13 +22,13 @@ android {
     buildToolsVersion "${BUILD_TOOLS_VERSION}"
 
     defaultConfig {
-        applicationId "clwang.chunyu.me.wcl_espresso_dagger_demo"
+        applicationId "org.wangchenlong.wcl_espresso_dagger_demo"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "clwang.chunyu.me.wcl_espresso_dagger_demo.runner.WeatherTestRunner"
+        testInstrumentationRunner "org.wangchenlong.wcl_espresso_dagger_demo.runner.WeatherTestRunner"
     }
 
     buildTypes {

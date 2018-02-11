@@ -6,7 +6,7 @@
     <data>
         <variable
             name="weatherData"
-            type="clwang.chunyu.me.wcl_espresso_dagger_demo.data.WeatherData"/>
+            type="org.wangchenlong.wcl_espresso_dagger_demo.data.WeatherData"/>
     </data>
 
     <FrameLayout
@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context=".MainActivity">
+        tools:context="org.wangchenlong.wcl_espresso_dagger_demo.MainActivity">
 
         <RelativeLayout
             android:id="@+id/weather_layout"
