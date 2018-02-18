@@ -31,34 +31,28 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  * <p>
  * Created by wangchenlong on 16/1/16.
  */
-@LargeTest
-@RunWith(AndroidJUnit4.class)
+@LargeTest @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
-
     private static final String CITY_NAME = "Beijing"; // 因为我们使用测试接口, 设置任何都可以.
-
-    @Rule public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<>(MainActivity.class);
-
+    @Rule public ActivityTestRule<MainActivity> activityTestRule =
+            new ActivityTestRule<>(MainActivity.class);
     @Inject WeatherApiClient weatherApiClient;  // 测试服务
 
-    @Before
-    public void setUp() {
+    @Before public void setUp() {
         Log.e("WCL-TEST", "setUp");
-        ((TestWeatherApplication) activityTestRule.getActivity().getApplication()).getAppComponent().inject(this);
-
-
+        ((TestWeatherApplication) activityTestRule.getActivity().getApplication())
+                .getAppComponent().inject(this);
     }
 
-    @Test
-    public void correctWeatherDataDisplayed() {
+    @Test public void correctWeatherDataDisplayed() {
         Log.e("WCL-TEST", "correctWeatherDataDisplayed");
         // 执行操作
         onView(ViewMatchers.withId(R.id.menu_action_search)).perform(click());
         onView(withId(android.support.v7.appcompat.R.id.search_src_text)).perform(replaceText(CITY_NAME));
         onView(withId(android.support.v7.appcompat.R.id.search_src_text)).perform(pressKey(KeyEvent.KEYCODE_ENTER));
 
+        // 验证逻辑
         WeatherData weatherData = weatherApiClient.getWeatherForCity(CITY_NAME).toBlocking().first();
-
         onView(withId(R.id.city_name)).check(matches(withText(weatherData.getCityName())));
         onView(withId(R.id.weather_date)).check(matches(withText(weatherData.getWeatherDate())));
         onView(withId(R.id.weather_state)).check(matches(withText(weatherData.getWeatherState())));
@@ -66,9 +60,4 @@ public class MainActivityTest {
         onView(withId(R.id.temperature)).check(matches(withText(weatherData.getTemperatureCelsius())));
         onView(withId(R.id.humidity)).check(matches(withText(weatherData.getHumidity())));
     }
-
-    public ViewInteraction before(int id) {
-        return onView(withId(id));
-    }
-
 }

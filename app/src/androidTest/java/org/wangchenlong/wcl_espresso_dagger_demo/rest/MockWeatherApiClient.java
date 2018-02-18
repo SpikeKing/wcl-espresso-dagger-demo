@@ -30,8 +30,8 @@ import rx.Observable;
  */
 public class MockWeatherApiClient implements WeatherApiClient {
     @Override public Observable<WeatherData> getWeatherForCity(String cityName) {
-        // 获得模拟数据
-        WeatherData weatherData = new Gson().fromJson(TestData.MUNICH_WEATHER_DATA_JSON, WeatherData.class);
+        WeatherData weatherData = new Gson()
+                .fromJson(TestData.MUNICH_WEATHER_DATA_JSON, WeatherData.class);  // 获得模拟数据
         return Observable.just(weatherData).delay(1, TimeUnit.SECONDS); // 延迟时间
     }
 }

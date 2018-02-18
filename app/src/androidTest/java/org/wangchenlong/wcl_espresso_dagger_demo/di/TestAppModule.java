@@ -4,6 +4,7 @@ import android.content.Context;
 
 import org.wangchenlong.wcl_espresso_dagger_demo.networks.WeatherApiClient;
 import org.wangchenlong.wcl_espresso_dagger_demo.rest.MockWeatherApiClient;
+
 import dagger.Module;
 import dagger.Provides;
 
@@ -20,14 +21,11 @@ public class TestAppModule {
         mContext = context.getApplicationContext();
     }
 
-    @AppScope
-    @Provides
-    public Context provideAppContext() {
+    @AppScope @Provides public Context provideAppContext() {
         return mContext;
     }
 
-    @Provides
-    public WeatherApiClient provideWeatherApiClient() {
+    @Provides public WeatherApiClient provideWeatherApiClient() {
         return new MockWeatherApiClient();
     }
 }

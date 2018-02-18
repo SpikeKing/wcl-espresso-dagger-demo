@@ -30,11 +30,8 @@ import java.util.Locale;
  */
 @SuppressWarnings("unused")
 public class WeatherData {
-
-    public static final String DATE_FORMAT = "EEEE, d MMM";
-
-    private static final int KELVIN_ZERO = 273;
-
+    public static final String DATE_FORMAT = "EEEE, d MMM";  // 日期格式
+    private static final int KELVIN_ZERO = 273;  // 开尔文0度
     private static final String FORMAT_TEMPERATURE_CELSIUS = "%d°";
 
     private String name; // 城市名称
@@ -65,19 +62,16 @@ public class WeatherData {
         return String.format("%d%%", main.humidity);
     }
 
-    // 返回天气
-    private Weather weather() {
+    private Weather weather() { // 返回天气
         return weather[0];
     }
 
-    // 天气信息类
-    private static class Weather {
+    private static class Weather {  // 天气信息类
         private String main; // 简介
         private String description; // 描述
     }
 
-    // 主要信息类
-    private static class Main {
+    private static class Main {  // 主要指标类
         private float temp; // 温度
         private int humidity; // 湿度
     }

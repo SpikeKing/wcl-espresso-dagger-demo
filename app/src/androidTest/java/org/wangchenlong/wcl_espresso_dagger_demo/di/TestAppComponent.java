@@ -9,8 +9,7 @@ import dagger.Component;
  * <p>
  * Created by wangchenlong on 16/1/16.
  */
-@AppScope
-@Component(modules = TestAppModule.class)
+@AppScope @Component(modules = TestAppModule.class)
 public interface TestAppComponent extends AppComponent {
     void inject(MainActivityTest test);
 }

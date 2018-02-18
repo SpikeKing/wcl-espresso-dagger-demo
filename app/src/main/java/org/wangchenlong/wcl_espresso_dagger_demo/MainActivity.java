@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mBinding; // 数据绑定
     private MenuItem mSearchItem; // 菜单项
     private Subscription mSubscription; // 订阅
-
     @Inject WeatherApiClient mWeatherApiClient; // 天气客户端
 
     @Override
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         ((WeatherApplication) getApplication()).getAppComponent().inject(this);
         mBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
     }
-
 
     @Override public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_main, menu); // 加载目录资源

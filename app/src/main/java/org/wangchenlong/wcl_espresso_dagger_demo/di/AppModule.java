@@ -3,10 +3,12 @@ package org.wangchenlong.wcl_espresso_dagger_demo.di;
 import android.content.Context;
 
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 
 import org.wangchenlong.wcl_espresso_dagger_demo.R;
 import org.wangchenlong.wcl_espresso_dagger_demo.networks.ApiKeyInterceptor;
 import org.wangchenlong.wcl_espresso_dagger_demo.networks.WeatherApiClient;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit.GsonConverterFactory;
@@ -18,8 +20,7 @@ import retrofit.RxJavaCallAdapterFactory;
  * <p>
  * Created by wangchenlong on 16/1/12.
  */
-@Module
-public class AppModule {
+@Module public class AppModule {
     private final Context mContext;
 
     public AppModule(Context context) {
@@ -30,13 +31,11 @@ public class AppModule {
         return mContext;
     }
 
-    // Retrofit 2.0的请求
     @Provides public WeatherApiClient provideWeatherApiClient() {
-
         OkHttpClient client = new OkHttpClient();
         client.interceptors().add(
                 new ApiKeyInterceptor(mContext.getString(R.string.open_weather_api_key)));
-
+        client.interceptors().add(new HttpLoggingInterceptor());
         return new Retrofit.Builder()
                 .baseUrl(WeatherApiClient.END_POINT)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -45,5 +44,4 @@ public class AppModule {
                 .build()
                 .create(WeatherApiClient.class);
     }
-
 }
